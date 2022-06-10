@@ -1,0 +1,6 @@
+
+Link GitHub Relaciones Entity Model completas:
+
+https://github.com/MarwinCastillo2021/WebApiKalum.git
+
+El proyecto actualizado se encuentra en el branch feature/carreras-tecnicas

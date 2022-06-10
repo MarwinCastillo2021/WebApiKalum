@@ -10,6 +10,6 @@ namespace WebApiKalum.Entities
         public DateTime FechaInscripcion { get; set; }
         public virtual CarreraTecnica CarreraTecnica { get; set; }
         public virtual Jornada Jornada { get; set; }
-        public virtual Alumno alumnos { get; set; }
+        public virtual Alumno Alumno { get; set; }
     }
 }

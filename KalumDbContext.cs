@@ -15,6 +15,7 @@ namespace WebApiKalum
         public DbSet<InversionCarreraTecnica> InversionCarreraTecnica { get; set; }
         public DbSet<CuentaPorCobrar> CuentaPorCobrar { get; set; }
         public DbSet<Cargo> Cargo { get; set; }
+        public DbSet<Alumno> Alumno { get; set; }
 
         //#nullable disable warnings
         public KalumDbContext(DbContextOptions options) : base(options)
@@ -62,7 +63,7 @@ namespace WebApiKalum
                 .HasForeignKey(i => i.JornadaId);
 
             modelBuilder.Entity<Inscripcion>()
-                .HasOne<Alumno>(i => i.alumnos)
+                .HasOne<Alumno>(i => i.Alumno)
                 .WithMany(al => al.Inscripciones)
                 .HasForeignKey(i => i.Carne);
 
