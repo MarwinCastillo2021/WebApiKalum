@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using WebApiKalum.Entities;
 using Microsoft.EntityFrameworkCore;
+
 namespace WebApiKalum.Controllers
 {
     [ApiController]
@@ -33,9 +34,8 @@ namespace WebApiKalum.Controllers
         public async Task<ActionResult<Jornada>>GetJornada(string id)
         {
             Logger.LogDebug("Iniciando el proceso de busqueda de la Jornada con el id :" + id);
-            var jornada = await DbContext.Jornada.Include(j => j.Aspirantes)
-                                .Include(j => j.Inscripciones)
-                                .FirstOrDefaultAsync(j => j.JornadaId == id);
+            var jornada = await DbContext.Jornada.Include(j => j.Aspirantes).FirstOrDefaultAsync(j => j.JornadaId == id);
+                jornada = await DbContext.Jornada.Include(j => j.Inscripciones).FirstOrDefaultAsync(j => j.JornadaId == id);
             if(jornada == null)
             {
                 Logger.LogWarning("No Existe la Jornada con el id : " + id);

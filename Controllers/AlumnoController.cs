@@ -33,9 +33,8 @@ namespace WebApiKalum.Controllers
         public async Task<ActionResult<Alumno>> GetAlumno(string id)
         {
             Logger.LogDebug("Iniciando el proceso de busqueda de Alumno con el Carne :" + id);
-            var alumnos = await DbContext.Alumno.Include(al => al.Inscripciones)
-                                .Include(al => al.CuentasPorCobrar)
-                                .FirstOrDefaultAsync(al => al.Carne == id);
+            var alumnos = await DbContext.Alumno.Include(al => al.Inscripciones).FirstOrDefaultAsync(al => al.Carne == id);
+                alumnos = await DbContext.Alumno.Include(al => al.CuentasPorCobrar).FirstOrDefaultAsync(al => al.Carne == id);
             if(alumnos == null)
             {
                 Logger.LogWarning("No Existe el Alumno con el Carne : " + id);

@@ -40,7 +40,8 @@ namespace WebApiKalum.Controllers
         public async Task<ActionResult<CarreraTecnica>>GetCarreraTecnica(string id) //Metodo para listar carrera por id
         {
             Logger.LogDebug("Iniciando el proceso de busqueda con el id" + id);
-            var carrera = await DbContext.CarreraTecnica.Include(c => c.Aspirantes).Include(c => c.Inscripciones).FirstOrDefaultAsync(ct => ct.CarreraId == id);
+            var carrera = await DbContext.CarreraTecnica.Include(c => c.Aspirantes).FirstOrDefaultAsync(c => c.CarreraId == id);
+                carrera = await DbContext.CarreraTecnica.Include(c => c.Inscripciones).FirstOrDefaultAsync(c => c.CarreraId == id);
             if(carrera == null)
             {
                 Logger.LogWarning("No existe la carrera tecnica con el id" + id);
@@ -76,7 +77,7 @@ namespace WebApiKalum.Controllers
                 return (carreraTecnica);
             }
         }
-        [HttpPut("id")]
+        [HttpPut("{id}")]
         public async Task<ActionResult> Put(string id, [FromBody] CarreraTecnica value)
         {
             Logger.LogDebug($"iniciando proceso de actualizacion de la carrera tecnica con el id {id}");
