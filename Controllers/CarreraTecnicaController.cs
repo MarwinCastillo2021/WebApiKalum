@@ -52,7 +52,7 @@ namespace WebApiKalum.Controllers
         }
         public async Task<ActionResult<CarreraTecnica>> Post([FromBody] CarreraTecnica value) 
         {
-            Logger.LogDebug("Iniciando procso de agregar una carrera tecnica nueva");
+            Logger.LogDebug("Iniciando proceso de agregar una carrera tecnica nueva");
             value.CarreraId =Guid.NewGuid().ToString().ToUpper();
             await DbContext.CarreraTecnica.AddAsync(value);
             await DbContext.SaveChangesAsync();
