@@ -41,5 +41,48 @@ namespace WebApiKalum.Controllers
             Logger.LogInformation("Existe Examen de Admision con id" + id);
             return Ok(examen);
         }
+        public async Task<ActionResult<ExamenAdmision>> Post([FromBody] ExamenAdmision value)
+        {
+            Logger.LogDebug("Iniciando procedimiento para agregar una nueva fecha para Examen de Admision");
+            value.ExamenId = Guid.NewGuid().ToString().ToUpper();
+            await DbContext.ExamenAdmision.AddAsync(value);
+            await DbContext.SaveChangesAsync();
+            Logger.LogInformation("Se agrego una fecha de examen nueva admision");
+            return new CreatedAtRouteResult("GetExamenAdmision", new{id = value.ExamenId}, value);
+        }
+        [HttpDelete ("{id}")]
+        public async Task<ActionResult<ExamenAdmision>> Delete(string id)
+        {
+            Logger.LogDebug($"Iniciando el proceso para eliminar la fecha de examen con el Id {id}");
+            ExamenAdmision examenAdmision = await DbContext.ExamenAdmision.FirstOrDefaultAsync(ea => ea.ExamenId == id);
+            if(examenAdmision == null)
+            {
+                Logger.LogWarning($"No se encontro la fecha de examen con el id {id}, el registro no se puede eliminar");
+                return NotFound();
+            }
+            else
+            {
+                DbContext.ExamenAdmision.Remove(examenAdmision);
+                await DbContext.SaveChangesAsync();
+                Logger.LogInformation($"Se elimino correctamente la fecha de examen con el id {id}");
+                return (examenAdmision);
+            }
+        }
+        [HttpPut("{id}")]
+        public async Task<ActionResult> Put(string id, [FromBody] ExamenAdmision value)
+        {
+            Logger.LogDebug($"Iniciando proceso de actualizacion para fecha de examen con el Id {id}");
+            ExamenAdmision examenAdmision = await DbContext.ExamenAdmision.FirstOrDefaultAsync(ea => ea.ExamenId == id);
+            if(examenAdmision == null)
+            {
+                Logger.LogWarning($"No existe la fecha de examen con el Id {id}, el registro no puede actualizarse");
+                return BadRequest();
+            }
+            examenAdmision.FechaExamen = value.FechaExamen;
+            DbContext.Entry(examenAdmision).State = EntityState.Modified;
+            await DbContext.SaveChangesAsync();
+            Logger.LogInformation($"El cambmio de fecha con el Id {id} se realizo exitosamente!!");
+            return Ok(examenAdmision);
+        }
     }
 }
