@@ -71,13 +71,13 @@ namespace WebApiKalum.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult> Put(string id, [FromBody] Alumno value, string message)
+        public async Task<ActionResult> Put(string id, [FromBody] Alumno value)
         {
             Logger.LogDebug($"Iniciando el proceso de actualizacion del registro con el numero de Carne : {id} ");
             Alumno alumno = await DbContext.Alumno.FirstOrDefaultAsync(al => al.Carne == id);
             if(alumno == null)
             {
-                Logger.LogWarning(message);
+                Logger.LogWarning($"El Alumno con el Id {id} no existe, no se puede eliminar el Alumno");
                 return BadRequest();
             }
             alumno.Nombres = value.Nombres;
