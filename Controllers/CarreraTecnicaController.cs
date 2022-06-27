@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using WebApiKalum.Entities;
 using Microsoft.EntityFrameworkCore;
+using WebApiKalum.DTOs;
 
 namespace WebApiKalum.Controllers
 {
@@ -50,9 +51,10 @@ namespace WebApiKalum.Controllers
             Logger.LogInformation("Finalizando el proceso de busqueda de forma exitosa");
             return Ok(carrera);
         }
-        public async Task<ActionResult<CarreraTecnica>> Post([FromBody] CarreraTecnica value) 
+        public async Task<ActionResult<CarreraTecnica>> Post([FromBody] CarreraTecnicaCreateDTO value) 
         {
             Logger.LogDebug("Iniciando proceso de agregar una carrera tecnica nueva");
+            
             value.CarreraId =Guid.NewGuid().ToString().ToUpper();
             await DbContext.CarreraTecnica.AddAsync(value);
             await DbContext.SaveChangesAsync();

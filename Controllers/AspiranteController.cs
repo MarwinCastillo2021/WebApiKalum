@@ -17,7 +17,12 @@ namespace WebApiKalum.Controllers
             this.Logger = _Logger;
 
         }
-
+        //[HttpGet]
+        //p`ublic async Task<ActionResult<IEnumerable<Aspirante>>> Get()
+        //{
+            //Logger.LogDebug("Iniciando proceso de consulta de aspirante");
+            //List<Aspirante> lista = await DbContext.Aspirante
+        //}
         [HttpPost]
         public async Task<ActionResult<Aspirante>> Post([FromBody] Aspirante value)
         {

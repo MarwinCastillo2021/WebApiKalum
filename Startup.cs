@@ -12,6 +12,7 @@ namespace WebApiKalum
         public void ConfigureServices (IServiceCollection _services)
         {
             _services.AddControllers();
+            _services.AddAutoMapper(typeof(Startup));
             _services.AddControllers().AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
             _services.AddDbContext<KalumDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("defaultConnection")));
             _services.AddEndpointsApiExplorer();
