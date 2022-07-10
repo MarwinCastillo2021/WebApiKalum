@@ -63,3 +63,6 @@ C:\Users\Usuario\OneDrive\Documents\Ingeniería en Sistemas\ASP.NET Kinal\BackEn
 C:\Users\Usuario\OneDrive\Documents\Ingeniería en Sistemas\ASP.NET Kinal\BackEnd\Produccion\WebApiKalum\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 C:\Users\Usuario\OneDrive\Documents\Ingeniería en Sistemas\ASP.NET Kinal\BackEnd\Produccion\WebApiKalum\bin\Debug\net6.0\Newtonsoft.Json.dll
 C:\Users\Usuario\OneDrive\Documents\Ingeniería en Sistemas\ASP.NET Kinal\BackEnd\Produccion\WebApiKalum\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
+C:\Users\Usuario\OneDrive\Documents\Ingeniería en Sistemas\ASP.NET Kinal\BackEnd\Produccion\WebApiKalum\bin\Debug\net6.0\AutoMapper.dll
+C:\Users\Usuario\OneDrive\Documents\Ingeniería en Sistemas\ASP.NET Kinal\BackEnd\Produccion\WebApiKalum\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\Usuario\OneDrive\Documents\Ingeniería en Sistemas\ASP.NET Kinal\BackEnd\Produccion\WebApiKalum\bin\Debug\net6.0\RabbitMQ.Client.dll

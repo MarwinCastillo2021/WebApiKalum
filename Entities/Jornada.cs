@@ -11,5 +11,6 @@ namespace WebApiKalum.Entities
         public string Descripcion { get; set; }
         public virtual List<Aspirante> Aspirantes { get; set; } 
         public virtual List<Inscripcion> Inscripciones { get; set; }
+        
     }
 }
